@@ -11,16 +11,11 @@ public class CustomerSearchAction {
 	// 顧客情報検索アクション
 	public String[][] execute(String[] data) throws Exception{
 		
-		String tel = data[0];
-		String kana = data[1];
+		String tel = (data != null && data.length > 0 && data[0] != null) ? data[0] : "";
+		String kana = (data != null && data.length > 1 && data[1] != null) ? data[1] : "";
 		
-		if (tel != null) {
-			tel = tel.trim().replace("　", "");
-		}
-		
-		if (kana != null) {
-			kana = kana.trim().replace("　", "");
-		}
+		tel = tel.trim().replace("　", "");
+		kana = kana.trim().replace("　", "");
 		
 		CustomerSearchDBAccess dao = new CustomerSearchDBAccess();
 		ArrayList<Customer> list = new ArrayList<>();
@@ -35,7 +30,7 @@ public class CustomerSearchAction {
 		
 		String[][] tableData;
 		
-		if (list != null && list.size() > 0) {
+		if (list.size() > 0) {
 			tableData = OrderControlUtility.customerToArray(list);
 			
 		} else {

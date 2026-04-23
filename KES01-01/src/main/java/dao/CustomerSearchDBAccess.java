@@ -11,11 +11,12 @@ import model.Customer;
 
 public class CustomerSearchDBAccess {
 	
+	private static final String URL = "jdbc:mysql://localhost:65534/KIDDA_LA";
+	private static final String USER = "user1";
+	private static final String PASS = "pass1";
+	
 	// DB接続
 	private Connection createConnection() throws Exception {
-		final String URL = "jdbc:mysql://localhost:65534/KIDDA_LA";
-		final String USER = "user1";
-		final String PASS = "pass1";
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		
 		return con;
@@ -66,16 +67,27 @@ public class CustomerSearchDBAccess {
 			throw e;
 			
 		} finally {
-			if (rs != null) {
-				rs.close();
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 			
-			if (ps != null) {
-				ps.close();
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 			
-			closeConnection(con);
-			
+			try {
+				closeConnection(con);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return list;
@@ -119,16 +131,27 @@ public class CustomerSearchDBAccess {
 			throw e;
 			
 		} finally {
-			if (rs != null) {
-				rs.close();
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 			
-			if (ps != null) {
-				ps.close();
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 			
-			closeConnection(con);
-			
+			try {
+				closeConnection(con);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return list;
@@ -174,16 +197,27 @@ public class CustomerSearchDBAccess {
 			throw e;
 			
 		} finally {
-			if (rs != null) {
-				rs.close();
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 			
-			if (ps != null) {
-				ps.close();
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 			
-			closeConnection(con);
-			
+			try {
+				closeConnection(con);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return list;
